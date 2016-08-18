@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.3 Bash variables are untyped &mdash; My Project v1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="My Project v1" href="index.html"/>
+        <link rel="up" title="4. Variables and Parameters" href="4_intro_to_vars_and_params.html"/>
+        <link rel="next" title="4.4 Special Variable Types" href="4.4.html"/>
+        <link rel="prev" title="4.2 Variable Assignment" href="4.2.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> My Project
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="4_intro_to_vars_and_params.html">4. Variables and Parameters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4.1.html">4.1 Variable Substitution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2.html">4.2 Variable Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#example-plain-variable-assignment">Example. Plain Variable Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#example-variable-assignment-plain-and-fancy">Example. Variable Assignment, plain and fancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#variable-assignment-using">Variable assignment using $(...)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.3 Bash variables are untyped</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-integer-or-string">Example. Integer or string?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4.4.html">4.4 Special Variable Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_quoting.html">5. Quoting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2 Escaping (incomplete)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5.2.html#example-escaped-characters">Example. Escaped Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5.2.html#example-detecting-key-presses">Example. Detecting Key Presses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9_another_look_at_vars.html">9. Another Look at Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="9.1.html">9.1 Internal Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#builtin-variables">Builtin variables:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-env">$BASH_ENV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-subshell">$BASH_SUBSHELL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">My Project</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="4_intro_to_vars_and_params.html">4. Variables and Parameters</a> &raquo;</li>
+        
+      <li>4.3 Bash variables are untyped</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/4.3.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bash-variables-are-untyped">
+<h1>4.3 Bash variables are untyped<a class="headerlink" href="#bash-variables-are-untyped" title="Permalink to this headline">¶</a></h1>
+<p>Unlike many other programming languages, Bash does not segregate its variables by &#8220;type.&#8221;</p>
+<ul class="simple">
+<li>Essentially, Bash variables are character strings, but, depending on context, Bash permits arithmetic operations and comparisons on variables.</li>
+<li>The determining factor is whether the value of a variable contains only digits.</li>
+</ul>
+<p>Untyped variables are both a blessing and a curse.</p>
+<ul class="simple">
+<li>They permit more flexibility in scripting and make it easier to grind out lines of code (and give you enough rope to hang yourself!).</li>
+<li>However, they likewise permit subtle errors to creep in and encourage sloppy programming habits.</li>
+<li>To lighten the burden of keeping track of variable types in a script, Bash does permit declaring variables.</li>
+</ul>
+<div class="section" id="example-integer-or-string">
+<h2>Example. Integer or string?<a class="headerlink" href="#example-integer-or-string" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># int-or-string.sh</span>
+
+<span class="nv">a</span><span class="o">=</span><span class="m">2334</span>                   <span class="c1"># Integer.</span>
+<span class="nb">let</span> <span class="s2">&quot;a += 1&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;a = </span><span class="nv">$a</span><span class="s2"> &quot;</span>           <span class="c1"># a = 2335</span>
+<span class="nb">echo</span>                     <span class="c1"># Integer, still.</span>
+
+
+<span class="nv">b</span><span class="o">=</span><span class="si">${</span><span class="nv">a</span><span class="p">/23/BB</span><span class="si">}</span>             <span class="c1"># Substitute &quot;BB&quot; for &quot;23&quot;.</span>
+                         <span class="c1"># This transforms $b into a string.</span>
+<span class="nb">echo</span> <span class="s2">&quot;b = </span><span class="nv">$b</span><span class="s2">&quot;</span>            <span class="c1"># b = BB35</span>
+<span class="nb">declare</span> -i b             <span class="c1"># Declaring it an integer doesn&#39;t help.</span>
+<span class="nb">echo</span> <span class="s2">&quot;b = </span><span class="nv">$b</span><span class="s2">&quot;</span>            <span class="c1"># b = BB35</span>
+
+<span class="nb">let</span> <span class="s2">&quot;b += 1&quot;</span>             <span class="c1"># BB35 + 1</span>
+<span class="nb">echo</span> <span class="s2">&quot;b = </span><span class="nv">$b</span><span class="s2">&quot;</span>            <span class="c1"># b = 1</span>
+<span class="nb">echo</span>                     <span class="c1"># Bash sets the &quot;integer value&quot; of a string to 0.</span>
+
+<span class="nv">c</span><span class="o">=</span>BB34
+<span class="nb">echo</span> <span class="s2">&quot;c = </span><span class="nv">$c</span><span class="s2">&quot;</span>            <span class="c1"># c = BB34</span>
+<span class="nv">d</span><span class="o">=</span><span class="si">${</span><span class="nv">c</span><span class="p">/BB/23</span><span class="si">}</span>             <span class="c1"># Substitute &quot;23&quot; for &quot;BB&quot;.</span>
+                         <span class="c1"># This makes $d an integer.</span>
+<span class="nb">echo</span> <span class="s2">&quot;d = </span><span class="nv">$d</span><span class="s2">&quot;</span>            <span class="c1"># d = 2334</span>
+<span class="nb">let</span> <span class="s2">&quot;d += 1&quot;</span>             <span class="c1"># 2334 + 1</span>
+<span class="nb">echo</span> <span class="s2">&quot;d = </span><span class="nv">$d</span><span class="s2">&quot;</span>            <span class="c1"># d = 2335</span>
+<span class="nb">echo</span>
+
+
+<span class="c1"># What about null variables?</span>
+<span class="nv">e</span><span class="o">=</span><span class="s1">&#39;&#39;</span>                     <span class="c1"># ... Or e=&quot;&quot; ... Or e=</span>
+<span class="nb">echo</span> <span class="s2">&quot;e = </span><span class="nv">$e</span><span class="s2">&quot;</span>            <span class="c1"># e =</span>
+<span class="nb">let</span> <span class="s2">&quot;e += 1&quot;</span>             <span class="c1"># Arithmetic operations allowed on a null variable?</span>
+<span class="nb">echo</span> <span class="s2">&quot;e = </span><span class="nv">$e</span><span class="s2">&quot;</span>            <span class="c1"># e = 1</span>
+<span class="nb">echo</span>                     <span class="c1"># Null variable transformed into an integer.</span>
+
+<span class="c1"># What about undeclared variables?</span>
+<span class="nb">echo</span> <span class="s2">&quot;f = </span><span class="nv">$f</span><span class="s2">&quot;</span>            <span class="c1"># f =</span>
+<span class="nb">let</span> <span class="s2">&quot;f += 1&quot;</span>             <span class="c1"># Arithmetic operations allowed?</span>
+<span class="nb">echo</span> <span class="s2">&quot;f = </span><span class="nv">$f</span><span class="s2">&quot;</span>            <span class="c1"># f = 1</span>
+<span class="nb">echo</span>                     <span class="c1"># Undeclared variable transformed into an integer.</span>
+<span class="c1">#</span>
+<span class="c1"># However ...</span>
+<span class="nb">let</span> <span class="s2">&quot;f /= </span><span class="nv">$undecl_var</span><span class="s2">&quot;</span>   <span class="c1"># Divide by zero?</span>
+<span class="c1">#   let: f /= : syntax error: operand expected (error token is &quot; &quot;)</span>
+<span class="c1"># Syntax error! Variable $undecl_var is not set to zero here!</span>
+<span class="c1">#</span>
+<span class="c1"># But still ...</span>
+<span class="nb">let</span> <span class="s2">&quot;f /= 0&quot;</span>
+<span class="c1">#   let: f /= 0: division by 0 (error token is &quot;0&quot;)</span>
+<span class="c1"># Expected behavior.</span>
+
+
+<span class="c1">#  Bash (usually) sets the &quot;integer value&quot; of null to zero</span>
+<span class="c1">#+ when performing an arithmetic operation.</span>
+<span class="c1">#  But, don&#39;t try this at home, folks!</span>
+<span class="c1">#  It&#39;s undocumented and probably non-portable behavior.</span>
+
+
+<span class="c1"># Conclusion: Variables in Bash are untyped,</span>
+<span class="c1">#+ with all attendant consequences.</span>
+
+<span class="nb">exit</span> <span class="nv">$?</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4.4.html" class="btn btn-neutral float-right" title="4.4 Special Variable Types" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="4.2.html" class="btn btn-neutral" title="4.2 Variable Assignment" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

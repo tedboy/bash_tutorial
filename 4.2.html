@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2 Variable Assignment &mdash; My Project v1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="My Project v1" href="index.html"/>
+        <link rel="up" title="4. Variables and Parameters" href="4_intro_to_vars_and_params.html"/>
+        <link rel="next" title="4.3 Bash variables are untyped" href="4.3.html"/>
+        <link rel="prev" title="4.1 Variable Substitution" href="4.1.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> My Project
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="4_intro_to_vars_and_params.html">4. Variables and Parameters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4.1.html">4.1 Variable Substitution</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2 Variable Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-plain-variable-assignment">Example. Plain Variable Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-variable-assignment-plain-and-fancy">Example. Variable Assignment, plain and fancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-assignment-using">Variable assignment using $(...)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4.3.html">4.3 Bash variables are untyped</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="4.3.html#example-integer-or-string">Example. Integer or string?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4.4.html">4.4 Special Variable Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_quoting.html">5. Quoting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2 Escaping (incomplete)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5.2.html#example-escaped-characters">Example. Escaped Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5.2.html#example-detecting-key-presses">Example. Detecting Key Presses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9_another_look_at_vars.html">9. Another Look at Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="9.1.html">9.1 Internal Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#builtin-variables">Builtin variables:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-env">$BASH_ENV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-subshell">$BASH_SUBSHELL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">My Project</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="4_intro_to_vars_and_params.html">4. Variables and Parameters</a> &raquo;</li>
+        
+      <li>4.2 Variable Assignment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/4.2.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="variable-assignment">
+<h1>4.2 Variable Assignment<a class="headerlink" href="#variable-assignment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-plain-variable-assignment">
+<h2>Example. Plain Variable Assignment<a class="headerlink" href="#example-plain-variable-assignment" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Naked variables</span>
+
+<span class="nb">echo</span>
+
+<span class="c1"># When is a variable &quot;naked&quot;, i.e., lacking the &#39;$&#39; in front?</span>
+<span class="c1"># When it is being assigned, rather than referenced.</span>
+
+<span class="c1"># Assignment</span>
+<span class="nv">a</span><span class="o">=</span>879
+<span class="nb">echo</span> <span class="s2">&quot;The value of \&quot;a\&quot; is </span><span class="nv">$a</span><span class="s2">.&quot;</span>
+
+<span class="c1"># Assignment using &#39;let&#39;</span>
+<span class="nb">let</span> <span class="nv">a</span><span class="o">=</span>16+5
+<span class="nb">echo</span> <span class="s2">&quot;The value of \&quot;a\&quot; is now </span><span class="nv">$a</span><span class="s2">.&quot;</span>
+
+<span class="nb">echo</span>
+
+<span class="c1"># In a &#39;for&#39; loop (really, a type of disguised assignment):</span>
+<span class="nb">echo</span> -n <span class="s2">&quot;Values of \&quot;a\&quot; in the loop are: &quot;</span>
+<span class="k">for</span> a in <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> 11
+<span class="k">do</span>
+  <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> &quot;</span>
+<span class="k">done</span>
+
+<span class="nb">echo</span>
+<span class="nb">echo</span>
+
+<span class="c1"># In a &#39;read&#39; statement (also a type of assignment):</span>
+<span class="nb">echo</span> -n <span class="s2">&quot;Enter \&quot;a\&quot; &quot;</span>
+<span class="nb">read</span> a
+<span class="nb">echo</span> <span class="s2">&quot;The value of \&quot;a\&quot; is now </span><span class="nv">$a</span><span class="s2">.&quot;</span>
+
+<span class="nb">echo</span>
+
+<span class="nb">exit</span> 0
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="example-variable-assignment-plain-and-fancy">
+<h2>Example. Variable Assignment, plain and fancy<a class="headerlink" href="#example-variable-assignment-plain-and-fancy" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">a</span><span class="o">=</span><span class="m">23</span>              <span class="c1"># Simple case</span>
+<span class="nb">echo</span> <span class="nv">$a</span>
+<span class="nv">b</span><span class="o">=</span><span class="nv">$a</span>
+<span class="nb">echo</span> <span class="nv">$b</span>
+
+<span class="c1"># Now, getting a little bit fancier (command substitution).</span>
+
+<span class="nv">a</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> Hello!<span class="sb">`</span>   <span class="c1"># Assigns result of &#39;echo&#39; command to &#39;a&#39; ...</span>
+<span class="nb">echo</span> <span class="nv">$a</span>
+<span class="c1">#  Note that including an exclamation mark (!) within a</span>
+<span class="c1">#+ command substitution construct will not work from the command-line,</span>
+<span class="c1">#+ since this triggers the Bash &quot;history mechanism.&quot;</span>
+<span class="c1">#  Inside a script, however, the history functions are disabled by default.</span>
+
+<span class="nv">a</span><span class="o">=</span><span class="sb">`</span>ls -l<span class="sb">`</span>         <span class="c1"># Assigns result of &#39;ls -l&#39; command to &#39;a&#39;</span>
+<span class="nb">echo</span> <span class="nv">$a</span>           <span class="c1"># Unquoted, however, it removes tabs and newlines.</span>
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span>         <span class="c1"># The quoted variable preserves whitespace.</span>
+                  <span class="c1"># (See the chapter on &quot;Quoting.&quot;)</span>
+
+<span class="nb">exit</span> 0
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="variable-assignment-using">
+<h2>Variable assignment using $(...)<a class="headerlink" href="#variable-assignment-using" title="Permalink to this headline">¶</a></h2>
+<p>Variable assignment using the $(...) mechanism (a newer method than <a class="reference external" href="http://www.tldp.org/LDP/abs/html/commandsub.html#BACKQUOTESREF">backquotes</a>). This is likewise a form of <a class="reference external" href="http://www.tldp.org/LDP/abs/html/commandsub.html#COMMANDSUBREF">command substitution</a></p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># From /etc/rc.d/rc.local</span>
+<span class="nv">R</span><span class="o">=</span><span class="k">$(</span>cat /etc/redhat-release<span class="k">)</span>
+<span class="nv">arch</span><span class="o">=</span><span class="k">$(</span>uname -m<span class="k">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4.3.html" class="btn btn-neutral float-right" title="4.3 Bash variables are untyped" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="4.1.html" class="btn btn-neutral" title="4.1 Variable Substitution" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

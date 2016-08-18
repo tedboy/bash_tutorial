@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.2 Escaping (incomplete) &mdash; My Project v1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="My Project v1" href="index.html"/>
+        <link rel="up" title="5. Quoting" href="5_quoting.html"/>
+        <link rel="next" title="9. Another Look at Variables" href="9_another_look_at_vars.html"/>
+        <link rel="prev" title="5. Quoting" href="5_quoting.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> My Project
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="4_intro_to_vars_and_params.html">4. Variables and Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1.html">4.1 Variable Substitution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2.html">4.2 Variable Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#example-plain-variable-assignment">Example. Plain Variable Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#example-variable-assignment-plain-and-fancy">Example. Variable Assignment, plain and fancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4.2.html#variable-assignment-using">Variable assignment using $(...)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4.3.html">4.3 Bash variables are untyped</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="4.3.html#example-integer-or-string">Example. Integer or string?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4.4.html">4.4 Special Variable Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="5_quoting.html">5. Quoting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2 Escaping (incomplete)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-escaped-characters">Example. Escaped Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-detecting-key-presses">Example. Detecting Key Presses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="9_another_look_at_vars.html">9. Another Look at Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="9.1.html">9.1 Internal Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#builtin-variables">Builtin variables:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-env">$BASH_ENV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="9.1.html#bash-subshell">$BASH_SUBSHELL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">My Project</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="5_quoting.html">5. Quoting</a> &raquo;</li>
+        
+      <li>5.2 Escaping (incomplete)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/5.2.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="escaping-incomplete">
+<h1>5.2 Escaping (incomplete)<a class="headerlink" href="#escaping-incomplete" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-escaped-characters">
+<h2>Example. Escaped Characters<a class="headerlink" href="#example-escaped-characters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># escaped.sh: escaped characters</span>
+
+<span class="c1">#############################################################</span>
+<span class="c1">### First, let&#39;s show some basic escaped-character usage. ###</span>
+<span class="c1">#############################################################</span>
+
+<span class="c1"># Escaping a newline.</span>
+<span class="c1"># ------------------</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;This will print</span>
+<span class="s2">as two lines.&quot;</span>
+<span class="c1"># This will print</span>
+<span class="c1"># as two lines.</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;This will print \</span>
+<span class="s2">as one line.&quot;</span>
+<span class="c1"># This will print as one line.</span>
+
+echo<span class="p">;</span> <span class="nb">echo</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;=============&quot;</span>
+
+
+<span class="nb">echo</span> <span class="s2">&quot;\v\v\v\v&quot;</span>      <span class="c1"># Prints \v\v\v\v literally.</span>
+<span class="c1"># Use the -e option with &#39;echo&#39; to print escaped characters.</span>
+<span class="nb">echo</span> <span class="s2">&quot;=============&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;VERTICAL TABS&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\v\v\v\v&quot;</span>   <span class="c1"># Prints 4 vertical tabs.</span>
+<span class="nb">echo</span> <span class="s2">&quot;==============&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;QUOTATION MARK&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\042&quot;</span>       <span class="c1"># Prints &quot; (quote, octal ASCII character 42).</span>
+<span class="nb">echo</span> <span class="s2">&quot;==============&quot;</span>
+
+
+
+<span class="c1"># The $&#39;\X&#39; construct makes the -e option unnecessary.</span>
+
+echo<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;NEWLINE and (maybe) BEEP&quot;</span>
+<span class="nb">echo</span> <span class="s1">$&#39;\n&#39;</span>           <span class="c1"># Newline.</span>
+<span class="nb">echo</span> <span class="s1">$&#39;\a&#39;</span>           <span class="c1"># Alert (beep).</span>
+                     <span class="c1"># May only flash, not beep, depending on terminal.</span>
+
+<span class="c1"># We have seen $&#39;\nnn&quot; string expansion, and now . . .</span>
+
+<span class="c1"># =================================================================== #</span>
+<span class="c1"># Version 2 of Bash introduced the $&#39;\nnn&#39; string expansion construct.</span>
+<span class="c1"># =================================================================== #</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Introducing the \$\&#39; ... \&#39; string-expansion construct . . . &quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;. . . featuring more quotation marks.&quot;</span>
+
+<span class="nb">echo</span> <span class="s1">$&#39;\t \042 \t&#39;</span>   <span class="c1"># Quote (&quot;) framed by tabs.</span>
+<span class="c1"># Note that  &#39;\nnn&#39; is an octal value.</span>
+
+<span class="c1"># It also works with hexadecimal values, in an $&#39;\xhhh&#39; construct.</span>
+<span class="nb">echo</span> <span class="s1">$&#39;\t \x22 \t&#39;</span>  <span class="c1"># Quote (&quot;) framed by tabs.</span>
+<span class="c1"># Thank you, Greg Keraunen, for pointing this out.</span>
+<span class="c1"># Earlier Bash versions allowed &#39;\x022&#39;.</span>
+
+<span class="nb">echo</span>
+
+
+<span class="c1"># Assigning ASCII characters to a variable.</span>
+<span class="c1"># ----------------------------------------</span>
+<span class="nv">quote</span><span class="o">=</span><span class="s1">$&#39;\042&#39;</span>        <span class="c1"># &quot; assigned to a variable.</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$quote</span><span class="s2"> Quoted string </span><span class="nv">$quote</span><span class="s2"> and this lies outside the quotes.&quot;</span>
+
+<span class="nb">echo</span>
+
+<span class="c1"># Concatenating ASCII chars in a variable.</span>
+<span class="nv">triple_underline</span><span class="o">=</span><span class="s1">$&#39;\137\137\137&#39;</span>  <span class="c1"># 137 is octal ASCII code for &#39;_&#39;.</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$triple_underline</span><span class="s2"> UNDERLINE </span><span class="nv">$triple_underline</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span>
+
+<span class="nv">ABC</span><span class="o">=</span><span class="s1">$&#39;\101\102\103\010&#39;</span>           <span class="c1"># 101, 102, 103 are octal A, B, C.</span>
+<span class="nb">echo</span> <span class="nv">$ABC</span>
+
+<span class="nb">echo</span>
+
+<span class="nv">escape</span><span class="o">=</span><span class="s1">$&#39;\033&#39;</span>                    <span class="c1"># 033 is octal for escape.</span>
+<span class="nb">echo</span> <span class="s2">&quot;\&quot;escape\&quot; echoes as </span><span class="nv">$escape</span><span class="s2">&quot;</span>
+<span class="c1">#                                   no visible output.</span>
+
+<span class="nb">echo</span>
+
+<span class="nb">exit</span> 0
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="example-detecting-key-presses">
+<h2>Example. Detecting Key Presses<a class="headerlink" href="#example-detecting-key-presses" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Author: Sigurd Solaas, 20 Apr 2011</span>
+<span class="c1"># Used in ABS Guide with permission.</span>
+<span class="c1"># Requires version 4.2+ of Bash.</span>
+
+<span class="nv">key</span><span class="o">=</span><span class="s2">&quot;no value yet&quot;</span>
+<span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
+  clear
+  <span class="nb">echo</span> <span class="s2">&quot;Bash Extra Keys Demo. Keys to try:&quot;</span>
+  <span class="nb">echo</span>
+  <span class="nb">echo</span> <span class="s2">&quot;* Insert, Delete, Home, End, Page_Up and Page_Down&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;* The four arrow keys&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;* Tab, enter, escape, and space key&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;* The letter and number keys, etc.&quot;</span>
+  <span class="nb">echo</span>
+  <span class="nb">echo</span> <span class="s2">&quot;    d = show date/time&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;    q = quit&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;================================&quot;</span>
+  <span class="nb">echo</span>
+
+ <span class="c1"># Convert the separate home-key to home-key_num_7:</span>
+ <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$key</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s1">$&#39;\x1b\x4f\x48&#39;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nv">key</span><span class="o">=</span><span class="s1">$&#39;\x1b\x5b\x31\x7e&#39;</span>
+  <span class="c1">#   Quoted string-expansion construct.</span>
+ <span class="k">fi</span>
+
+ <span class="c1"># Convert the separate end-key to end-key_num_1.</span>
+ <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$key</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s1">$&#39;\x1b\x4f\x46&#39;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nv">key</span><span class="o">=</span><span class="s1">$&#39;\x1b\x5b\x34\x7e&#39;</span>
+ <span class="k">fi</span>
+
+ <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$key</span><span class="s2">&quot;</span> in
+  <span class="s1">$&#39;\x1b\x5b\x32\x7e&#39;</span><span class="o">)</span>  <span class="c1"># Insert</span>
+   <span class="nb">echo</span> Insert Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x33\x7e&#39;</span><span class="o">)</span>  <span class="c1"># Delete</span>
+   <span class="nb">echo</span> Delete Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x31\x7e&#39;</span><span class="o">)</span>  <span class="c1"># Home_key_num_7</span>
+   <span class="nb">echo</span> Home Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x34\x7e&#39;</span><span class="o">)</span>  <span class="c1"># End_key_num_1</span>
+   <span class="nb">echo</span> End Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x35\x7e&#39;</span><span class="o">)</span>  <span class="c1"># Page_Up</span>
+   <span class="nb">echo</span> Page_Up
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x36\x7e&#39;</span><span class="o">)</span>  <span class="c1"># Page_Down</span>
+   <span class="nb">echo</span> Page_Down
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x41&#39;</span><span class="o">)</span>  <span class="c1"># Up_arrow</span>
+   <span class="nb">echo</span> Up arrow
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x42&#39;</span><span class="o">)</span>  <span class="c1"># Down_arrow</span>
+   <span class="nb">echo</span> Down arrow
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x43&#39;</span><span class="o">)</span>  <span class="c1"># Right_arrow</span>
+   <span class="nb">echo</span> Right arrow
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b\x5b\x44&#39;</span><span class="o">)</span>  <span class="c1"># Left_arrow</span>
+   <span class="nb">echo</span> Left arrow
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x09&#39;</span><span class="o">)</span>  <span class="c1"># Tab</span>
+   <span class="nb">echo</span> Tab Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x0a&#39;</span><span class="o">)</span>  <span class="c1"># Enter</span>
+   <span class="nb">echo</span> Enter Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x1b&#39;</span><span class="o">)</span>  <span class="c1"># Escape</span>
+   <span class="nb">echo</span> Escape Key
+  <span class="p">;;</span>
+  <span class="s1">$&#39;\x20&#39;</span><span class="o">)</span>  <span class="c1"># Space</span>
+   <span class="nb">echo</span> Space Key
+  <span class="p">;;</span>
+  d<span class="o">)</span>
+   date
+  <span class="p">;;</span>
+  q<span class="o">)</span>
+  <span class="nb">echo</span> Time to quit...
+  <span class="nb">echo</span>
+  <span class="nb">exit</span> 0
+  <span class="p">;;</span>
+  *<span class="o">)</span>
+   <span class="nb">echo</span> You pressed: <span class="se">\&#39;</span><span class="s2">&quot;</span><span class="nv">$key</span><span class="s2">&quot;</span><span class="se">\&#39;</span>
+  <span class="p">;;</span>
+ <span class="k">esac</span>
+
+ <span class="nb">echo</span>
+ <span class="nb">echo</span> <span class="s2">&quot;================================&quot;</span>
+
+ <span class="nb">unset</span> K1 K2 K3
+ <span class="nb">read</span> -s -N1 -p <span class="s2">&quot;Press a key: &quot;</span>
+ <span class="nv">K1</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span>
+ <span class="nb">read</span> -s -N2 -t 0.001
+ <span class="nv">K2</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span>
+ <span class="nb">read</span> -s -N1 -t 0.001
+ <span class="nv">K3</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span>
+ <span class="nv">key</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$K1$K2$K3</span><span class="s2">&quot;</span>
+
+<span class="k">done</span>
+
+<span class="nb">exit</span> <span class="nv">$?</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="9_another_look_at_vars.html" class="btn btn-neutral float-right" title="9. Another Look at Variables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5_quoting.html" class="btn btn-neutral" title="5. Quoting" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
